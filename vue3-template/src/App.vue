@@ -1,30 +1,30 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <router-view />
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({});
+</script>
+
+<style lang="scss">
+.el-menu-item:hover {
+  outline: 0 !important;
+  color: #409eff !important;
 }
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.el-submenu__title:focus,
+.el-submenu__title:hover {
+  outline: 0 !important;
+  color: #fff !important;
+  background: #435ebe !important;
+  border-radius: 8px !important;
+}
+.el-menu-item:hover {
+  outline: 0 !important;
+  color: #fff !important;
+  background: #435ebe !important;
+  border-radius: 8px !important;
 }
 </style>
