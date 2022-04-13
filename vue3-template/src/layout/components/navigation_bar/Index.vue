@@ -13,65 +13,39 @@
       class="hamburger-container"
       @toggle-click="toggleSideBar"
     />
-    <BreadCrumb
-      id="breadcrumb-container"
-      class="breadcrumb-container"
-    />
+    <BreadCrumb id="breadcrumb-container" class="breadcrumb-container" />
     <div class="right-menu">
       <template v-if="device !== 'mobile'">
         <!-- <error-log class="errLog-container right-menu-item hover-effect" /> -->
         <Screenfull class="right-menu-item hover-effect" />
-        <el-tooltip
-          :content="t('navbar.size')"
-          effect="dark"
-          placement="bottom"
-        >
-          <SizeSelect class="right-menu-item hover-effect" />
-        </el-tooltip>
-        <LangSelect class="right-menu-item hover-effect" />
       </template>
-      <el-dropdown
-        class="avatar-container right-menu-item hover-effect"
-        trigger="click"
-      >
+      <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img
-            :src="avatar + '?imageView2/1/w/80/h/80'"
-            class="user-avatar"
-          >
+          <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
         </div>
         <template #dropdown>
           <el-dropdown-menu>
             <router-link to="/profile/">
               <el-dropdown-item>
-                {{ t("navbar.profile") }}
+                {{ t('navbar.profile') }}
               </el-dropdown-item>
             </router-link>
             <router-link to="/">
               <el-dropdown-item>
-                {{ t("navbar.dashboard") }}
+                {{ t('navbar.dashboard') }}
               </el-dropdown-item>
             </router-link>
-            <a
-              target="_blank"
-              href="https://github.com/rcyj-FED/vue3-composition-admin"
-            >
+            <a target="_blank" href="https://github.com/rcyj-FED/vue3-composition-admin">
               <el-dropdown-item>
-                {{ t("navbar.github") }}
+                {{ t('navbar.github') }}
               </el-dropdown-item>
             </a>
-            <a
-              target="_blank"
-              href="https://armour.github.io/vue-typescript-admin-docs/"
-            >
+            <a target="_blank" href="https://armour.github.io/vue-typescript-admin-docs/">
               <el-dropdown-item>Docs</el-dropdown-item>
             </a>
-            <el-dropdown-item
-              divided
-              @click="logout"
-            >
-              <span style="display:block;">
-                {{ t("navbar.logOut") }}
+            <el-dropdown-item divided @click="logout">
+              <span style="display: block">
+                {{ t('navbar.logOut') }}
               </span>
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -82,60 +56,56 @@
 </template>
 
 <script>
-import BreadCrumb from '@/components/bread-crumb/Index.vue'
-import Hamburger from '@/components/hamburger/Index.vue'
-import Screenfull from '@/components/screenfull/Index.vue'
-import LangSelect from '@/components/lang_select/Index.vue'
-import SizeSelect from '@/components/size_select/Index.vue'
+import BreadCrumb from '@/components/bread-crumb/Index.vue';
+import Hamburger from '@/components/hamburger/Index.vue';
+import Screenfull from '@/components/screenfull/Index.vue';
 
-import { computed, reactive, toRefs } from 'vue'
-import { useStore } from '@/store'
-import { AppActionTypes } from '@/store/modules/app/action-types'
-import { useI18n } from 'vue-i18n'
-import { UserActionTypes } from '@/store/modules/user/action-types'
-import { useRoute, useRouter } from 'vue-router'
+import { computed, reactive, toRefs } from 'vue';
+import { useStore } from '@/store';
+import { AppActionTypes } from '@/store/modules/app/action-types';
+import { useI18n } from 'vue-i18n';
+import { UserActionTypes } from '@/store/modules/user/action-types';
+import { useRoute, useRouter } from 'vue-router';
 export default {
   components: {
     BreadCrumb,
     Hamburger,
     Screenfull,
-    LangSelect,
-    SizeSelect
   },
   setup() {
-    const store = useStore()
-    const route = useRoute()
-    const router = useRouter()
-    const { t } = useI18n()
+    const store = useStore();
+    const route = useRoute();
+    const router = useRouter();
+    const { t } = useI18n();
     const sidebar = computed(() => {
-      return store.state.app.sidebar
-    })
+      return store.state.app.sidebar;
+    });
     const device = computed(() => {
-      return store.state.app.device.toString()
-    })
+      return store.state.app.device.toString();
+    });
     const avatar = computed(() => {
-      return store.state.user.avatar
-    })
+      return store.state.user.avatar;
+    });
     const state = reactive({
       toggleSideBar: () => {
-        store.dispatch(AppActionTypes.ACTION_TOGGLE_SIDEBAR, false)
+        store.dispatch(AppActionTypes.ACTION_TOGGLE_SIDEBAR, false);
       },
       logout: () => {
-        useStore().dispatch(UserActionTypes.ACTION_LOGIN_OUT)
-        router.push(`/login?redirect=${route.fullPath}`).catch(err => {
-          console.warn(err)
-        })
-      }
-    })
+        useStore().dispatch(UserActionTypes.ACTION_LOGIN_OUT);
+        router.push(`/login?redirect=${route.fullPath}`).catch((err) => {
+          console.warn(err);
+        });
+      },
+    });
     return {
       sidebar,
       device,
       avatar,
       ...toRefs(state),
-      t
-    }
-  }
-}
+      t,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
