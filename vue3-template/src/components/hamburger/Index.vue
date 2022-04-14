@@ -7,39 +7,32 @@
 -->
 
 <template>
-  <div
-    :class="[{'is-active': isActive}]"
-    @click="toggleClick"
-  >
-    <svg
-      class="icon"
-      aria-hidden="true"
-      font-size="20px"
-    >
-      <use xlink:href="#iconhamburger" />
-    </svg>
+  <div :class="[{ 'is-active': isActive }]" @click="toggleClick">
+    <el-icon :size="20" class="icon"><expand /></el-icon>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
+import { Expand } from '@element-plus/icons-vue';
 export default defineComponent({
+  components: { Expand },
   props: {
     isActive: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   emits: ['toggle-click'],
   setup(_, context) {
     const toggleClick = () => {
-      context.emit('toggle-click')
-    }
+      context.emit('toggle-click');
+    };
     return {
-      toggleClick
-    }
-  }
-})
+      toggleClick,
+    };
+  },
+});
 </script>
 
 <style lang="scss" scoped>

@@ -21,7 +21,8 @@
       </template>
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
+          <!-- <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" /> -->
+          <img src="@/assets/images/avatar.gif" class="user-avatar" />
         </div>
         <template #dropdown>
           <el-dropdown-menu>
@@ -149,7 +150,8 @@ export default {
     }
 
     .right-menu-item {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       padding: 0 8px;
       height: 100%;
       font-size: 18px;

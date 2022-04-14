@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Layout from '@/layout/Index.vue';
-import HomeView from '../views/dashboard/HomeView.vue';
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import Layout from '@/layout/Index.vue'
+import HomeView from '../views/dashboard/HomeView.vue'
 
 export const constantRoutes: Array<RouteRecordRaw> = [
   {
@@ -18,9 +18,10 @@ export const constantRoutes: Array<RouteRecordRaw> = [
           affix: true,
         },
       },
+
       {
         path: '401',
-        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/error-page/401.vue'),
+        component: () => import('@/views/error-page/401.vue'),
         name: '401',
         meta: {
           title: '401',
@@ -30,7 +31,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
       },
       {
         path: '404',
-        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/error-page/404.vue'),
+        component: () => import('@/views/error-page/404.vue'),
         name: '404',
         meta: {
           title: '404',
@@ -40,18 +41,23 @@ export const constantRoutes: Array<RouteRecordRaw> = [
       },
     ],
   },
-];
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/user-manager/login/Index.vue'),
+  },
+]
 
-export const asyncRoutes: Array<RouteRecordRaw> = [];
+export const asyncRoutes: Array<RouteRecordRaw> = []
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes: constantRoutes,
-});
+})
 
 export function resetRouter() {
-  const newRouter = router;
-  (router as any).matcher = (newRouter as any).matcher; // reset router
+  const newRouter = router
+  ;(router as any).matcher = (newRouter as any).matcher // reset router
 }
 
-export default router;
+export default router

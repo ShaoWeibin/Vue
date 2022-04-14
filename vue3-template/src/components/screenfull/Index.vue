@@ -8,40 +8,24 @@
 
 <template>
   <div id="screenfull">
-    <div
-      v-if="isFullscreen"
-      @click="click"
-    >
-      <svg
-        class="icon"
-        aria-hidden="true"
-        font-size="40px"
-      >
-        <use xlink:href="#iconshiliangzhinengduixiang1" />
-      </svg>
+    <div v-if="isFullscreen" @click="click" style="display: flex; align-items: center">
+      <el-icon :size="24"><full-screen /></el-icon>
     </div>
-    <div
-      @click="click"
-      v-else
-    >
-      <svg
-        class="icon"
-        aria-hidden="true"
-        font-size="40px"
-      >
-        <use xlink:href="#iconshiliangzhinengduixiang1" />
-      </svg>
+    <div @click="click" v-else style="display: flex; align-items: center">
+      <el-icon :size="24"><full-screen /></el-icon>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import screenfull from 'screenfull'
-import { defineComponent, onBeforeUnmount, onMounted, reactive, toRefs } from 'vue'
-import { ElMessage } from 'element-plus'
+import screenfull from 'screenfull';
+import { defineComponent, onBeforeUnmount, onMounted, reactive, toRefs } from 'vue';
+import { FullScreen } from '@element-plus/icons-vue';
+import { ElMessage } from 'element-plus';
 
-const sf = screenfull
+const sf = screenfull;
 export default defineComponent({
+  components: { FullScreen },
   setup() {
     const state = reactive({
       isFullscreen: false,
@@ -49,34 +33,33 @@ export default defineComponent({
         if (!sf.isEnabled) {
           ElMessage({
             message: 'you browser can not work',
-            type: 'warning'
-          })
-          return false
+            type: 'warning',
+          });
+          return false;
         }
-        sf.toggle()
-      }
-    })
+        sf.toggle();
+      },
+    });
     const change = () => {
       if (sf.isEnabled) {
-        state.isFullscreen = sf.isFullscreen
+        state.isFullscreen = sf.isFullscreen;
       }
-    }
+    };
     onMounted(() => {
       if (sf.isEnabled) {
-        sf.on('change', change)
+        sf.on('change', change);
       }
-    })
+    });
 
     onBeforeUnmount(() => {
       if (sf.isEnabled) {
-        sf.off('change', change)
+        sf.off('change', change);
       }
-    })
+    });
 
     return {
-      ...toRefs(state)
-    }
-  }
-})
-
+      ...toRefs(state),
+    };
+  },
+});
 </script>

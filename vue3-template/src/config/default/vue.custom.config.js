@@ -12,14 +12,15 @@ const vueDefaultConfig = {
   lintOnSave: true,
   transpileDependencies: ['vue-echarts', 'resize-detector'],
   //webpack 配置的项目名称
-  title: 'vue3-ts-composition-admin-template',
+  title: 'Vue3 Element-Plus Template',
   titleSeparator: ' - ',
   titleReverse: false,
-  devPort: '8888',
+  devServerPort: '8888',
+  mockServerPort: '9999',
   abbreviation: 'vt2at',
   providePlugin: {},
   build7z: false,
   startMessage: '欢迎使用vue3-ts-composition-admin-template,使用composition API和TS 玩转最潮技术',
-};
+}
 
-module.exports = vueDefaultConfig;
+module.exports = vueDefaultConfig
