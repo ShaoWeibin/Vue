@@ -6,7 +6,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 
-export default defineComponent({});
+export default defineComponent({
+  name: 'Dashboard', // name 要跟 router 定义中 name 保持一值，否则页面无法缓存
+})
 </script>

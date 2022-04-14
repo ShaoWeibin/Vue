@@ -44,13 +44,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue';
+import { defineComponent, reactive, toRefs } from 'vue'
 // import errGif from '@/assets/401-images/401.gif';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router'
 export default defineComponent({
+  name: 'Page401',
   setup() {
-    const route = useRoute();
-    const router = useRouter();
+    const route = useRoute()
+    const router = useRouter()
 
     const data = reactive({
       // errGif: errGif + '?' + +new Date(),
@@ -59,17 +60,17 @@ export default defineComponent({
       back() {
         if (route.query.noGoBack) {
           router.push({ path: '/dashboard' }).catch((err) => {
-            console.warn(err);
-          });
+            console.warn(err)
+          })
         } else {
-          router.go(-1);
+          router.go(-1)
         }
       },
-    });
+    })
 
-    return { ...toRefs(data) };
+    return { ...toRefs(data) }
   },
-});
+})
 </script>
 
 <style lang="scss" scoped>

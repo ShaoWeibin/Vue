@@ -4,6 +4,8 @@
 
 项目基于 [vue3-composition-admin](https://github.com/RainManGO/vue3-composition-admin)（[在线演示](https://admin-tmpl-test.rencaiyoujia.cn/)） 改造，保留 layout 框架布局及基础功能，移除其他不相关页面，提供最小集模板。
 
+想了解更多关于 template 的技术细节可参考 [vue-element-admin-admin 官网文档](https://panjiachen.github.io/vue-element-admin-site/zh/)。
+
 ## 功能列表
 
 ## Project setup
@@ -37,6 +39,36 @@ yarn test:e2e
 ```
 
 ### Customize configuration
+
+## 代码规范
+
+### Component
+
+所有的 Component 文件都是以大写开头 (PascalCase)
+
+- `/components/BackToTop/index.vue`
+- `@/components/Charts/Line.vue`
+- `@/views/example/components/Button.vue`
+
+> 说明：目录下的 index.vue 需小写
+
+### JS 文件
+
+所有的.js 文件都遵循横线连接 (kebab-case)
+
+- `@/utils/open-window.js`
+- `@/components/MarkdownEditor/default-options.js`
+
+### Views
+
+在 views 文件下命令跟 Component 保持一值，代表路由组件的 .vue 文件都是以大写开头 (PascalCase)
+
+> 说明：目录下的 index.vue 需小写
+
+- `/views/Dashbaord/index.vue`
+- `@/views/Home/index.vue`
+- `@/views/UserList/index.vue`
+- `@/views/UserList/Filter.vue`
 
 ## 相关项目
 

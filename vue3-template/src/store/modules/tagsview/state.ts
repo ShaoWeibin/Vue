@@ -12,11 +12,11 @@ export interface TagView extends Partial<RouteLocationNormalized> {
 }
 
 export interface TagsViewState {
-  visitedViews: TagView[]
-  cachedViews: (string | undefined)[]
+  visitedViews: TagView[] // 用户访问过的页面
+  cachedViews: (string | undefined)[] // 缓存的页面
 }
 
 export const state: TagsViewState = {
   visitedViews: [],
-  cachedViews: []
+  cachedViews: [],
 }
