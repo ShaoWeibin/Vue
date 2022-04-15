@@ -7,20 +7,22 @@
  */
 import { getToken } from '@/utils/cookies'
 
-export interface UserState{
-    token: string
-    name: string
-    avatar: string
-    introduction: string
-    roles: string[]
-    email: string
+export interface UserState {
+  token: string
+  name: string
+  avatar: string
+  introduction: string
+  roles: string[]
+  email: string
 }
 
 export const state: UserState = {
   token: getToken() || '',
+  // token: getToken() || 'admin-token', // TODO: 临时增加 default
   name: '',
   avatar: '',
   introduction: '',
   roles: [],
-  email: ''
+  // roles: ['admin'], // TODO: 临时增加 default
+  email: '',
 }

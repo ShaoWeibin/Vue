@@ -57,16 +57,16 @@
 </template>
 
 <script>
-import BreadCrumb from '@/components/bread-crumb/Index.vue';
-import Hamburger from '@/components/hamburger/Index.vue';
-import Screenfull from '@/components/screenfull/Index.vue';
+import BreadCrumb from '@/components/Breadcrumb'
+import Hamburger from '@/components/Hamburger'
+import Screenfull from '@/components/Screenfull'
 
-import { computed, reactive, toRefs } from 'vue';
-import { useStore } from '@/store';
-import { AppActionTypes } from '@/store/modules/app/action-types';
-import { useI18n } from 'vue-i18n';
-import { UserActionTypes } from '@/store/modules/user/action-types';
-import { useRoute, useRouter } from 'vue-router';
+import { computed, reactive, toRefs } from 'vue'
+import { useStore } from '@/store'
+import { AppActionTypes } from '@/store/modules/app/action-types'
+import { useI18n } from 'vue-i18n'
+import { UserActionTypes } from '@/store/modules/user/action-types'
+import { useRoute, useRouter } from 'vue-router'
 export default {
   components: {
     BreadCrumb,
@@ -74,39 +74,39 @@ export default {
     Screenfull,
   },
   setup() {
-    const store = useStore();
-    const route = useRoute();
-    const router = useRouter();
-    const { t } = useI18n();
+    const store = useStore()
+    const route = useRoute()
+    const router = useRouter()
+    const { t } = useI18n()
     const sidebar = computed(() => {
-      return store.state.app.sidebar;
-    });
+      return store.state.app.sidebar
+    })
     const device = computed(() => {
-      return store.state.app.device.toString();
-    });
+      return store.state.app.device.toString()
+    })
     const avatar = computed(() => {
-      return store.state.user.avatar;
-    });
+      return store.state.user.avatar
+    })
     const state = reactive({
       toggleSideBar: () => {
-        store.dispatch(AppActionTypes.ACTION_TOGGLE_SIDEBAR, false);
+        store.dispatch(AppActionTypes.ACTION_TOGGLE_SIDEBAR, false)
       },
       logout: () => {
-        useStore().dispatch(UserActionTypes.ACTION_LOGIN_OUT);
+        useStore().dispatch(UserActionTypes.ACTION_LOGIN_OUT)
         router.push(`/login?redirect=${route.fullPath}`).catch((err) => {
-          console.warn(err);
-        });
+          console.warn(err)
+        })
       },
-    });
+    })
     return {
       sidebar,
       device,
       avatar,
       ...toRefs(state),
       t,
-    };
+    }
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

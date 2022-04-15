@@ -2,7 +2,7 @@
  * 路由命名规范：路由全小写，以 - 分隔
  */
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Layout from '@/layout/Index.vue'
+import Layout from '@/layout/index.vue'
 
 /** 路由配置说明
 {
@@ -57,7 +57,10 @@ export const constantRoutes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/user-manager/login/Index.vue'),
+    meta: {
+      hidden: true,
+    },
+    component: () => import('@/views/user-manager/login/index.vue'),
   },
   {
     path: '/401',
@@ -65,7 +68,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     name: '401',
     meta: {
       title: '401',
-      icon: '',
+      hidden: true,
     },
   },
 
@@ -75,7 +78,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     name: '404',
     meta: {
       title: '404',
-      icon: '',
+      hidden: true,
     },
   },
   // 404 page must be placed at the end !!!

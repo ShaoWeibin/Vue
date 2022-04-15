@@ -7,4 +7,4 @@
  */
 
 const whiteList = ['/login', '/auth-redirect']
-export default  whiteList
+export default whiteList
