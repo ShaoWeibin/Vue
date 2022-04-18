@@ -9,53 +9,37 @@
 <template>
   <div
     v-if="!item.meta || !item.meta.hidden"
-    :class="[
-      isCollapse ? 'simple-mode' : 'full-mode',
-      {'first-level': isFirstLevel}
-    ]"
+    :class="[isCollapse ? 'simple-mode' : 'full-mode', { 'first-level': isFirstLevel }]"
   >
-    <template
-      v-if="!alwaysShowRootMenu && theOnlyOneChild && !theOnlyOneChild.children"
-    >
-      <SidebarItemLink
-        v-if="theOnlyOneChild.meta"
-        :to="resolvePath(theOnlyOneChild.path)"
-      >
+    <template v-if="!alwaysShowRootMenu && theOnlyOneChild && !theOnlyOneChild.children">
+      <SidebarItemLink v-if="theOnlyOneChild.meta" :to="resolvePath(theOnlyOneChild.path)">
         <el-menu-item
           :index="resolvePath(theOnlyOneChild.path)"
-          :class="{'submenu-title-noDropdown': isFirstLevel}"
+          :class="{ 'submenu-title-noDropdown': isFirstLevel }"
         >
-          <svg
-            v-if="theOnlyOneChild.meta.icon"
-            class="icon"
-            aria-hidden="true"
-            font-size="17px"
-          >
+          <!-- <svg v-if="theOnlyOneChild.meta.icon" class="icon" aria-hidden="true" font-size="17px">
             <use :xlink:href="theOnlyOneChild.meta.icon" />
-          </svg>
+          </svg> -->
+          <el-icon v-if="theOnlyOneChild.meta.icon"><home-filled /></el-icon>
           <span v-if="theOnlyOneChild.meta.title">{{
-            t("route." + theOnlyOneChild.meta.title)
+            t('route.' + theOnlyOneChild.meta.title)
           }}</span>
         </el-menu-item>
       </SidebarItemLink>
     </template>
-    <el-submenu
-      v-else
-      :index="resolvePath(item.path)"
-    >
+    <el-sub-menu v-else :index="resolvePath(item.path)">
       <!-- popper-append-to-body -->
       <template #title>
-        <svg
+        <!-- <svg
           v-if="item.meta && item.meta.icon"
           class="icon"
           aria-hidden="true"
           font-size="16px"
         >
           <use :xlink:href="item.meta.icon" />
-        </svg>
-        <span v-if="item.meta && item.meta.title">{{
-          t("route." + item.meta.title)
-        }}</span>
+        </svg> -->
+        <el-icon v-if="item.meta && item.meta.icon"><home-filled /></el-icon>
+        <span v-if="item.meta && item.meta.title">{{ t('route.' + item.meta.title) }}</span>
       </template>
       <template v-if="item.children">
         <sidebar-item
@@ -68,7 +52,7 @@
           class="nest-menu"
         />
       </template>
-    </el-submenu>
+    </el-sub-menu>
   </div>
 </template>
 
@@ -76,6 +60,7 @@
 import path from 'path'
 import { computed, defineComponent, PropType } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
+import { HomeFilled } from '@element-plus/icons-vue'
 import { isExternal } from '@/utils/validate'
 import SidebarItemLink from './SidebarItemLink.vue'
 import { useI18n } from 'vue-i18n'
@@ -83,23 +68,24 @@ export default defineComponent({
   props: {
     item: {
       type: Object as PropType<RouteRecordRaw>,
-      required: true
+      required: true,
     },
     isCollapse: {
       type: Boolean,
-      required: false
+      required: false,
     },
     isFirstLevel: {
       type: Boolean,
-      required: true
+      required: true,
     },
     basePath: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   components: {
-    SidebarItemLink
+    HomeFilled,
+    SidebarItemLink,
   },
   setup(props) {
     const alwaysShowRootMenu = computed(() => {
@@ -156,20 +142,20 @@ export default defineComponent({
       alwaysShowRootMenu,
       showingChildNumber,
       theOnlyOneChild,
-      resolvePath
+      resolvePath,
     }
-  }
+  },
 })
 </script>
 
 <style lang="scss" scoped>
-.el-submenu.is-active > .el-submenu__title {
+.el-sub-menu.is-active > .el-sub-menu__title {
   color: $subMenuActiveText !important;
 }
 
 .full-mode {
-  .nest-menu .el-submenu > .el-submenu__title,
-  .el-submenu .el-menu-item {
+  .nest-menu .el-sub-menu > .el-sub-menu__title,
+  .el-sub-menu .el-menu-item {
     min-width: $sideBarWidth !important;
     #background-color: $subMenuBg !important;
 
@@ -177,23 +163,22 @@ export default defineComponent({
       background-color: $subMenuHover !important;
     }
   }
-  .el-menu-item{
-    &>span{
+  .el-menu-item {
+    & > span {
       display: inline-block;
       padding-left: 5px;
     }
   }
-  .el-submenu {
+  .el-sub-menu {
     overflow: hidden;
 
-    & > .el-submenu__title {
-      .el-submenu__icon-arrow {
+    & > .el-sub-menu__title {
+      .el-sub-menu__icon-arrow {
         display: none;
       }
 
       & > span {
-             padding-left: 5px;
-
+        padding-left: 5px;
       }
     }
   }
@@ -210,13 +195,13 @@ export default defineComponent({
       }
     }
 
-    .el-submenu {
+    .el-sub-menu {
       overflow: hidden;
 
-      & > .el-submenu__title {
+      & > .el-sub-menu__title {
         padding: 0px !important;
 
-        .el-submenu__icon-arrow {
+        .el-sub-menu__icon-arrow {
           display: none;
         }
 
@@ -230,13 +215,15 @@ export default defineComponent({
 </style>
 
 <style lang="scss" scoped>
-svg {
-  margin-right: 16px;
+.el-icon svg {
+  // margin-right: 16px;
+  // height: 16px;
+  // width: 16px;
 }
 
 .simple-mode {
   svg {
-    margin-left: 20px;
+    // margin-left: 20px;
   }
 }
 </style>

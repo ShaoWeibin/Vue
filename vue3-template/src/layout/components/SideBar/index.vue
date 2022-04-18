@@ -6,14 +6,8 @@
  * @LastEditTime: 2021-04-06 14:16:03
 -->
 <template>
-  <div
-    :class="{'has-logo': showLogo}"
-    class="sideWrap"
-  >
-    <SidebarLogo
-      v-if="showLogo"
-      :collapse="isCollapse"
-    />
+  <div :class="{ 'has-logo': showLogo }" class="sideWrap">
+    <SidebarLogo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :collapse="!isCollapse"
@@ -47,7 +41,7 @@ import { useRoute } from 'vue-router'
 export default defineComponent({
   components: {
     SidebarItem,
-    SidebarLogo
+    SidebarLogo,
   },
   setup() {
     const store = useStore()
@@ -58,6 +52,7 @@ export default defineComponent({
     const routes = computed(() => {
       return store.state.permission.routes
     })
+    console.log('xxxxx', store.state.permission.routes)
     const showLogo = computed(() => {
       return store.state.settings.showSidebarLogo
     })
@@ -94,9 +89,9 @@ export default defineComponent({
       menuActiveTextColor,
       variables,
       activeMenu,
-      isCollapse
+      isCollapse,
     }
-  }
+  },
 })
 </script>
 
@@ -104,8 +99,7 @@ export default defineComponent({
 .sidebar-container {
   // reset element-ui css
   .horizontal-collapse-transition {
-    transition: 0s width ease-in-out, 0s padding-left ease-in-out,
-      0s padding-right ease-in-out;
+    transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
   }
 
   .scrollbar-wrapper {

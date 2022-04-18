@@ -3,9 +3,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 
-export default defineComponent({});
+export default defineComponent({})
 </script>
 
 <style lang="scss">
@@ -14,8 +14,8 @@ export default defineComponent({});
   color: #409eff !important;
 }
 
-.el-submenu__title:focus,
-.el-submenu__title:hover {
+.el-sub-menu__title:focus,
+.el-sub-menu__title:hover {
   outline: 0 !important;
   color: #fff !important;
   background: #435ebe !important;

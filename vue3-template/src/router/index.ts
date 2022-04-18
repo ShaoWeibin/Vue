@@ -49,6 +49,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
         meta: {
           title: 'dashboard',
           icon: '#icondashboard',
+          // icon: '#icondashboard',
           affix: true,
         },
       },
@@ -87,6 +88,66 @@ export const constantRoutes: Array<RouteRecordRaw> = [
 
 // 代表那些需求动态判断权限并通过 addRoutes 动态添加的页面
 export const asyncRoutes: Array<RouteRecordRaw> = [
+  {
+    path: '/nested',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'Nested',
+    meta: {
+      title: 'nested',
+      icon: '#iconnested',
+    },
+    children: [
+      {
+        path: 'menu1',
+        component: () => import(/* webpackChunkName: "menu1" */ '@/views/nested/menu1/index.vue'),
+        name: 'Menu1',
+        meta: { title: 'menu1', noCache: true },
+        children: [
+          {
+            path: 'menu1-1',
+            component: () =>
+              import(/* webpackChunkName: "menu1-1" */ '@/views/nested/menu1/menu1-1/index.vue'),
+            name: 'Menu1-1',
+            meta: { title: 'menu1-1' },
+          },
+          {
+            path: 'menu1-2',
+            component: () =>
+              import(/* webpackChunkName: "menu1-2" */ '@/views/nested/menu1/menu1-2/index.vue'),
+            name: 'Menu1-2',
+            meta: { title: 'menu1-2' },
+            children: [
+              {
+                path: 'menu1-2-1',
+                component: () =>
+                  import(
+                    /* webpackChunkName: "menu1-2-1" */ '@/views/nested/menu1/menu1-2/menu1-2-1/index.vue'
+                  ),
+                name: 'Menu1-2-1',
+                meta: { title: 'menu1-2-1' },
+              },
+              {
+                path: 'menu1-2-2',
+                component: () =>
+                  import(
+                    /* webpackChunkName: "menu1-2-2" */ '@/views/nested/menu1/menu1-2/menu1-2-2/index.vue'
+                  ),
+                name: 'Menu1-2-2',
+                meta: { title: 'menu1-2-2' },
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: 'menu2',
+        component: () => import(/* webpackChunkName: "menu2" */ '@/views/nested/menu2/index.vue'),
+        name: 'Menu2',
+        meta: { title: 'menu2' },
+      },
+    ],
+  },
   // 404 page must be placed at the end !!!
   {
     path: '/*',

@@ -79,26 +79,13 @@
           <span>{{ t('login.username') }} : editor </span>
           <span>{{ t('login.password') }} : {{ t('login.any') }} </span>
         </div>
-
-        <el-button class="thirdparty-button" type="primary" @click="showDialog = true">
-          {{ t('login.thirdparty') }}
-        </el-button>
       </div>
     </el-form>
-
-    <el-dialog :title="t('login.thirdparty')" v-model="showDialog">
-      {{ t('login.thirdpartyTips') }}
-      <br />
-      <br />
-      <br />
-      <SocialSign />
-    </el-dialog>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, watch, ref, nextTick, toRefs } from 'vue'
-import SocialSign from './components/SocialSignin.vue'
 import { isValidUsername } from '@/utils/validate'
 import { useRoute, LocationQuery, useRouter } from 'vue-router'
 import { useStore } from '@/store'
@@ -108,7 +95,6 @@ import { User, Lock } from '@element-plus/icons-vue'
 
 export default defineComponent({
   components: {
-    SocialSign,
     User,
     Lock,
   },
