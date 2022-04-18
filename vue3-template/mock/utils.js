@@ -2,14 +2,14 @@
  * @param {string} url
  * @returns {Object}
  */
-export function param2Obj(url) {
+function param2Obj(url) {
   const search = decodeURIComponent(url.split('?')[1]).replace(/\+/g, ' ')
   if (!search) {
     return {}
   }
   const obj = {}
   const searchArr = search.split('&')
-  searchArr.forEach((v) => {
+  searchArr.forEach(v => {
     const index = v.indexOf('=')
     if (index !== -1) {
       const name = v.substring(0, index)
@@ -27,12 +27,12 @@ export function param2Obj(url) {
  * @param {Object} source
  * @returns {Object}
  */
-export function deepClone(source) {
+function deepClone(source) {
   if (!source && typeof source !== 'object') {
     throw new Error('error arguments', 'deepClone')
   }
   const targetObj = source.constructor === Array ? [] : {}
-  Object.keys(source).forEach((keys) => {
+  Object.keys(source).forEach(keys => {
     if (source[keys] && typeof source[keys] === 'object') {
       targetObj[keys] = deepClone(source[keys])
     } else {
@@ -42,7 +42,7 @@ export function deepClone(source) {
   return targetObj
 }
 
-// module.exports = {
-//   param2Obj,
-//   deepClone
-// }
+module.exports = {
+  param2Obj,
+  deepClone
+}

@@ -18,11 +18,9 @@ export interface UserState {
 
 export const state: UserState = {
   token: getToken() || '',
-  // token: getToken() || 'admin-token', // TODO: 临时增加 default
   name: '',
   avatar: '',
   introduction: '',
   roles: [],
-  // roles: ['admin'], // TODO: 临时增加 default
   email: '',
 }

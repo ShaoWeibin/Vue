@@ -42,12 +42,6 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
   ) {
     let { username, password } = userInfo
     username = username.trim()
-    // TODO: 临时逻辑
-    // const router = useRouter()
-    // setToken('admin-token')
-    // commit(UserMutationTypes.SET_TOKEN, 'admin-token')
-    // return
-    // TODO: 临时逻辑
     await loginRequest({ username, password })
       .then(async (res: any) => {
         if (res?.code === 0 && res.data.accessToken) {

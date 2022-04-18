@@ -10,8 +10,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "mock": "cd mock && ts-node-dev mock-server.ts",
-    "mock2": "cd mock2 && ts-node-dev mock-server.ts"
+    "mock": "cd mock-express && ts-node-dev mock-server.ts"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
