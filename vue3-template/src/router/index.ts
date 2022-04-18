@@ -53,8 +53,16 @@ export const constantRoutes: Array<RouteRecordRaw> = [
           affix: true,
         },
       },
+    ],
+  },
+  {
+    path: '/profile',
+    component: Layout,
+    redirect: '/profile/index',
+    meta: { hidden: true },
+    children: [
       {
-        path: 'profile',
+        path: 'index',
         component: () => import(/* webpackChunkName: "profile" */ '@/views/profile/index.vue'),
         name: 'Profile',
         meta: {

@@ -26,7 +26,7 @@
         </div>
         <template #dropdown>
           <el-dropdown-menu>
-            <router-link to="/profile">
+            <router-link to="/profile/">
               <el-dropdown-item>
                 {{ t('navbar.profile') }}
               </el-dropdown-item>

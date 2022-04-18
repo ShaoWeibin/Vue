@@ -1,11 +1,10 @@
-
 const tokens = {
   admin: {
-    token: 'admin-token'
+    token: 'admin-token',
   },
   editor: {
-    token: 'editor-token'
-  }
+    token: 'editor-token',
+  },
 }
 
 const users = {
@@ -13,14 +12,14 @@ const users = {
     roles: ['admin'],
     introduction: 'I am a super administrator',
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-    name: 'Super Admin'
+    name: 'Super Admin',
   },
   'editor-token': {
     roles: ['editor'],
     introduction: 'I am an editor',
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-    name: 'Normal Editor'
-  }
+    name: 'Normal Editor',
+  },
 }
 
 module.exports = [
@@ -28,7 +27,7 @@ module.exports = [
   {
     url: '/users/login',
     type: 'post',
-    response: config => {
+    response: (config) => {
       const { username } = config.body
       const token = tokens[username]
 
@@ -36,7 +35,7 @@ module.exports = [
       if (!token) {
         return {
           code: 60204,
-          message: 'Account and password are incorrect.'
+          message: 'Account and password are incorrect.',
         }
       }
 
@@ -44,16 +43,16 @@ module.exports = [
         code: 0,
         data: {
           accessToken: username + '-token',
-        }
+        },
       }
-    }
+    },
   },
 
   // get user info
   {
-    url: '/users/info\.*',
+    url: '/users/info.*',
     type: 'get',
-    response: config => {
+    response: (config) => {
       const { token } = config.query
       const info = users[token]
 
@@ -61,26 +60,26 @@ module.exports = [
       if (!info) {
         return {
           code: 50008,
-          message: 'Login failed, unable to get user details.'
+          message: 'Login failed, unable to get user details.',
         }
       }
 
       return {
         code: 0,
-        data: info
+        data: info,
       }
-    }
+    },
   },
 
   // user logout
   {
     url: '/users/logout',
     type: 'post',
-    response: _ => {
+    response: (_) => {
       return {
         code: 0,
-        data: 'success'
+        data: 'success',
       }
-    }
-  }
+    },
+  },
 ]
