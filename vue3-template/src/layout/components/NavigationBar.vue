@@ -26,24 +26,11 @@
         </div>
         <template #dropdown>
           <el-dropdown-menu>
-            <router-link to="/profile/">
+            <router-link to="/profile">
               <el-dropdown-item>
                 {{ t('navbar.profile') }}
               </el-dropdown-item>
             </router-link>
-            <router-link to="/">
-              <el-dropdown-item>
-                {{ t('navbar.dashboard') }}
-              </el-dropdown-item>
-            </router-link>
-            <a target="_blank" href="https://github.com/rcyj-FED/vue3-composition-admin">
-              <el-dropdown-item>
-                {{ t('navbar.github') }}
-              </el-dropdown-item>
-            </a>
-            <a target="_blank" href="https://armour.github.io/vue-typescript-admin-docs/">
-              <el-dropdown-item>Docs</el-dropdown-item>
-            </a>
             <el-dropdown-item divided @click="logout">
               <span style="display: block">
                 {{ t('navbar.logOut') }}
