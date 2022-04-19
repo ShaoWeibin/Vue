@@ -11,7 +11,7 @@ import { state, UserState } from './state'
 import { Mutations } from './mutations'
 import { UserMutationTypes } from './mutation-types'
 import { UserActionTypes } from './action-types'
-import { loginRequest, userInfoRequest } from '@/apis/user'
+import { login, logout, getUserInfo } from '@/apis/user'
 import { removeToken, setToken } from '@/utils/cookies'
 import { PermissionActionType } from '../permission/action-types'
 import router, { resetRouter } from '@/router'
@@ -42,7 +42,7 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
   ) {
     let { username, password } = userInfo
     username = username.trim()
-    await loginRequest({ username, password })
+    await login({ username, password })
       .then(async (res: any) => {
         if (res?.code === 0 && res.data.accessToken) {
           setToken(res.data.accessToken)
@@ -64,7 +64,7 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
     if (state.token === '') {
       throw Error('token is undefined!')
     }
-    await userInfoRequest().then((res: any) => {
+    await getUserInfo({ token: state.token }).then((res: any) => {
       if (res?.code === 0) {
         commit(UserMutationTypes.SET_ROLES, res.data.roles)
         commit(UserMutationTypes.SET_NAME, res.data.name)
@@ -90,8 +90,8 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
     })
   },
 
-  [UserActionTypes.ACTION_LOGIN_OUT]({ commit }: AugmentedActionContext) {
-    console.log(commit)
+  async [UserActionTypes.ACTION_LOGIN_OUT]({ commit }: AugmentedActionContext) {
+    await logout()
     removeToken()
     commit(UserMutationTypes.SET_TOKEN, '')
     commit(UserMutationTypes.SET_ROLES, [])

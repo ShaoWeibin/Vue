@@ -7,27 +7,25 @@
  */
 
 import { RolesModels } from '@/model/getRolesModel'
-import { RootObject } from '@/model/rootObject'
 import { Routes } from '@/model/routesModel'
-import https from '@/utils/https'
-import { RequestParams, ContentType, Method } from 'axios-mapper'
+import request, { RequestParams, ResponseObject } from '@/utils/request'
 
-export const getRoutes = () => {
-  return https().request<RootObject<Routes>>('roles/getRoutes', Method.GET, undefined, ContentType.form)
+export const getRoutes = async () => {
+  return request.get<ResponseObject<Routes>>('roles/getRoutes')
 }
 
-export const getRoles = () => {
-  return https().request<RootObject<RolesModels>>('roles/getRoles', Method.GET, undefined, ContentType.form)
+export const getRoles = async () => {
+  return request.get<ResponseObject<RolesModels>>('roles/getRoles')
 }
 
-export const delRole = (id: number) => {
-  return https().request<RootObject<String>>('roles/deleteRole', Method.DELETE, { id }, ContentType.form)
+export const delRole = async (id: number) => {
+  return request.delete<ResponseObject<String>>('roles/deleteRole', { data: { id } })
 }
 
-export const updateRole = (id: number, data: any) => {
-  return https().request<RootObject<any>>(`roles/updateRole/${id}`, Method.POST, data, ContentType.form)
+export const updateRole = async (id: number, data: any) => {
+  return request.post<ResponseObject<any>>(`roles/updateRole/${id}`, data)
 }
 
-export const createRole = (role: RequestParams) => {
-  return https().request<RootObject<any>>('roles/createRole', Method.PUT, role, ContentType.form)
+export const createRole = async (role: RequestParams<{}>) => {
+  return request.put<ResponseObject<any>>('roles/createRole', role)
 }

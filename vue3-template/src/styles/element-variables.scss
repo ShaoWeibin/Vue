@@ -47,17 +47,18 @@ $--table-border: 1px solid #dfe6ec;
 // Override Element Plus variables
 /* 只需要重写需要的即可 */
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
-    // do not use same name, it will override.
-    $colors: $--colors,
-    $color-primary: #1890ff,
-    $text-color: $--text-color,
-    $border-color: $--border-color,
-    // $table-border: $--table-border
-  );
+  // do not use same name, it will override.
+  $colors: $--colors,
+  $color-primary: #00f,
+  $text-color: $--text-color,
+  $border-color: $--border-color,
+  // $table-border: $--table-border,
+  $button-border-radius: ('large': 8px, 'default': 8px, 'small': 8px)
+);
 
 // 如果只是按需导入，则可以忽略以下内容。
 /* 导入所有样式 */
-// @use "element-plus/theme-chalk/src/index.scss" as *;
+// @use 'element-plus/theme-chalk/src/index.scss' as *;
 
 // Apply overrided variables in Element UI
 // TODO: 找不到该目录

@@ -78,8 +78,8 @@ export default {
       toggleSideBar: () => {
         store.dispatch(AppActionTypes.ACTION_TOGGLE_SIDEBAR, false)
       },
-      logout: () => {
-        useStore().dispatch(UserActionTypes.ACTION_LOGIN_OUT)
+      logout: async () => {
+        await useStore().dispatch(UserActionTypes.ACTION_LOGIN_OUT)
         router.push(`/login?redirect=${route.fullPath}`).catch((err) => {
           console.warn(err)
         })

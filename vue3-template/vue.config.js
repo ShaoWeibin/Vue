@@ -69,7 +69,7 @@ module.exports = defineConfig({
   },
   css: {
     loaderOptions: {
-      sass: {
+      scss: {
         additionalData: `@use "~@/styles/element-variables.scss" as *;`,
       },
     },
