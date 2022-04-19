@@ -65,6 +65,7 @@
         :loading="loading"
         type="primary"
         style="width: 100%; margin-bottom: 30px"
+        size="large"
         @click.prevent="handleLogin"
       >
         {{ t('login.logIn') }}
@@ -231,11 +232,11 @@ export default defineComponent({
 .login-container {
   .el-input {
     display: inline-block;
-    height: 47px;
+    height: 48px;
     width: 85%;
 
     input {
-      height: 47px;
+      height: 48px;
       background: transparent;
       border: 0px;
       border-radius: 0px;
@@ -243,6 +244,7 @@ export default defineComponent({
       color: $lightGray;
       caret-color: $loginCursorColor;
       -webkit-appearance: none;
+      box-shadow: none;
 
       &:-webkit-autofill {
         box-shadow: 0 0 0px 1000px $loginBg inset !important;
