@@ -6,6 +6,7 @@ import { loadAllPlugins } from './plugins'
 import './permission'
 import * as directives from './directives'
 
+// import '@/styles/element-variables.scss'
 import '@/styles/index.scss'
 
 const app = createApp(App)

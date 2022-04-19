@@ -9,18 +9,12 @@
 <template>
   <div
     class="handle-button"
-    :style="{'top': buttonTop+'px','backgroundColor': theme}"
-    @click="show= true"
+    :style="{ top: buttonTop + 'px', backgroundColor: theme }"
+    @click="show = true"
   >
-    <i class="el-icon-setting" />
+    <el-icon><setting /></el-icon>
   </div>
-  <el-drawer
-    title="设置"
-    v-model="show"
-    size="300px"
-    :direction="direction"
-    destroy-on-close
-  >
+  <el-drawer title="设置" v-model="show" size="300px" :direction="direction" destroy-on-close>
     <slot />
   </el-drawer>
 </template>
@@ -28,12 +22,16 @@
 <script lang="ts">
 import { useStore } from '@/store'
 import { computed, defineComponent, ref } from 'vue'
+import { Setting } from '@element-plus/icons-vue'
 export default defineComponent({
   props: {
     buttonTop: {
       type: Number,
-      default: 250
-    }
+      default: 250,
+    },
+  },
+  components: {
+    Setting,
   },
   setup() {
     const show = ref(false)
@@ -41,16 +39,16 @@ export default defineComponent({
     const theme = computed(() => {
       return store.state.settings.theme
     })
+
     return {
       show,
-      theme
+      theme,
     }
-  }
+  },
 })
 </script>
 
 <style lang="scss" scoped>
-
 .handle-button {
   width: 48px;
   height: 48px;

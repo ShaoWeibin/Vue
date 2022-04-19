@@ -52,7 +52,6 @@ export default defineComponent({
     const routes = computed(() => {
       return store.state.permission.routes
     })
-    console.log('xxxxx', store.state.permission.routes)
     const showLogo = computed(() => {
       return store.state.settings.showSidebarLogo
     })

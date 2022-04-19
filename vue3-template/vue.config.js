@@ -1,6 +1,7 @@
 const { defineConfig } = require('@vue/cli-service')
 const { resolve } = require('path')
 const path = require('path')
+const ElementPlus = require('unplugin-element-plus/webpack')
 const mockServer = require('./mock/mock-server.js')
 
 const {
@@ -66,6 +67,13 @@ module.exports = defineConfig({
       ],
     },
   },
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@use "~@/styles/element-variables.scss" as *;`,
+      },
+    },
+  },
   configureWebpack() {
     return {
       // provide the app's title in webpack's name field, so that
@@ -81,6 +89,11 @@ module.exports = defineConfig({
           path: require.resolve('path-browserify'),
         },
       },
+      // plugins: [
+      //   ElementPlus({
+      //     useSource: true,
+      //   }),
+      // ],
     }
   },
   chainWebpack(config) {
