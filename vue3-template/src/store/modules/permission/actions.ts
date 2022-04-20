@@ -1,68 +1,67 @@
 /*
- * @Description:
- * @Author: ZY
- * @Date: 2020-12-25 15:03:52
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-11 21:05:18
+ * @Description: permission action
+ * @Author:
  */
 
-import { ActionTree, ActionContext } from 'vuex';
-import { RootState } from '@/store';
-import { PermissionState } from './state';
-import { Mutations } from './mutations';
-import { PermissionMutationType } from './mutation-types';
-import { PermissionActionType } from './action-types';
-import { asyncRoutes } from '@/router';
-import { RouteRecordRaw } from 'vue-router';
+import { ActionTree, ActionContext } from 'vuex'
+import { RootState } from '@/store'
+import { PermissionState } from './state'
+import { PermissionMutationType, Mutations } from './mutations'
+import { asyncRoutes } from '@/router'
+import { RouteRecordRaw } from 'vue-router'
+
+export enum PermissionActionType {
+  ACTION_SET_ROUTES = 'ACTION_SET_ROUTES',
+}
 
 type AugmentedActionContext = {
   commit<K extends keyof Mutations>(
     key: K,
     payload: Parameters<Mutations[K]>[1],
-  ): ReturnType<Mutations[K]>;
-} & Omit<ActionContext<PermissionState, RootState>, 'commit'>;
+  ): ReturnType<Mutations[K]>
+} & Omit<ActionContext<PermissionState, RootState>, 'commit'>
 
 const hasPermission = (roles: string[], route: RouteRecordRaw) => {
   if (route.meta && route.meta.roles) {
     return roles.some((role: string) => {
       if (route.meta?.roles !== undefined) {
-        return (route.meta.roles as string[])?.includes(role);
+        return (route.meta.roles as string[])?.includes(role)
       }
-    });
+    })
   } else {
-    return true;
+    return true
   }
-};
+}
 
 export const filterAsyncRoutes = (routes: RouteRecordRaw[], roles: string[]) => {
-  const res: RouteRecordRaw[] = [];
+  const res: RouteRecordRaw[] = []
   routes.forEach((route) => {
-    const r = { ...route };
+    const r = { ...route }
     if (hasPermission(roles, r)) {
       if (r.children) {
-        r.children = filterAsyncRoutes(r.children, roles);
+        r.children = filterAsyncRoutes(r.children, roles)
       }
-      res.push(r);
+      res.push(r)
     }
-  });
-  return res;
-};
+  })
+  return res
+}
 
 export interface Actions {
   [PermissionActionType.ACTION_SET_ROUTES](
     { commit }: AugmentedActionContext,
     roles: string[],
-  ): void;
+  ): void
 }
 
 export const actions: ActionTree<PermissionState, RootState> & Actions = {
   [PermissionActionType.ACTION_SET_ROUTES]({ commit }: AugmentedActionContext, roles: string[]) {
-    let accessedRoutes;
+    let accessedRoutes
     if (roles.includes('admin')) {
-      accessedRoutes = asyncRoutes;
+      accessedRoutes = asyncRoutes
     } else {
-      accessedRoutes = filterAsyncRoutes(asyncRoutes, roles);
+      accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
     }
-    commit(PermissionMutationType.SET_ROUTES, accessedRoutes);
+    commit(PermissionMutationType.SET_ROUTES, accessedRoutes)
   },
-};
+}

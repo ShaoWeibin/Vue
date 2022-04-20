@@ -1,9 +1,6 @@
 /*
  * @Description: 权限
- * @Author: ZY
- * @Date: 2020-12-28 09:12:46
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-27 19:36:01
+ * @Author:
  */
 
 import NProgress from 'nprogress' // progress bar
@@ -12,8 +9,8 @@ import 'nprogress/nprogress.css' // progress bar style
 import router from '@/router'
 import { RouteLocationNormalized } from 'vue-router'
 import { useStore } from './store'
-import { UserActionTypes } from './store/modules/user/action-types'
-import { PermissionActionType } from './store/modules/permission/action-types'
+import { UserActionTypes } from './store/modules/user'
+import { PermissionActionType } from './store/modules/permission'
 import { ElMessage } from 'element-plus'
 import whiteList from './config/default/whitelist'
 // import settings from '@/config/default/setting.config'

@@ -1,21 +1,23 @@
 /*
  * @Description: app Mutations
- * @Author: ZY
- * @Date: 2020-12-23 10:25:37
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-20 17:12:28
+ * @Author:
  */
 import { MutationTree } from 'vuex'
 import { SettingsState } from './state'
-import { SettingsMutationTypes } from './mutation-types'
+
+export enum SettingsMutationTypes {
+  CHANGE_SETTING = 'CHANGE_SETTING',
+}
 
 export type Mutations<S = SettingsState> = {
-  [SettingsMutationTypes.CHANGE_SETTING](state: S, payload: { key: string, value: any }): void
-
+  [SettingsMutationTypes.CHANGE_SETTING](state: S, payload: { key: string; value: any }): void
 }
 
 export const mutations: MutationTree<SettingsState> & Mutations = {
-  [SettingsMutationTypes.CHANGE_SETTING](state: SettingsState, payload: { key: string, value: any }) {
+  [SettingsMutationTypes.CHANGE_SETTING](
+    state: SettingsState,
+    payload: { key: string; value: any },
+  ) {
     const { key, value } = payload
     switch (key) {
       case 'theme':
@@ -39,5 +41,5 @@ export const mutations: MutationTree<SettingsState> & Mutations = {
       default:
         break
     }
-  }
+  },
 }

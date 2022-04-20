@@ -1,9 +1,6 @@
 <!--
  * @Description: 登录页面
- * @Author: ZY
- * @Date: 2020-12-28 16:27:50
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-28 16:32:33
+ * @Author: 
 -->
 
 <template>
@@ -90,7 +87,7 @@ import { defineComponent, onMounted, reactive, watch, ref, nextTick, toRefs } fr
 import { isValidUsername } from '@/utils/validate'
 import { useRoute, LocationQuery, useRouter } from 'vue-router'
 import { useStore } from '@/store'
-import { UserActionTypes } from '@/store/modules/user/action-types'
+import { UserActionTypes } from '@/store/modules/user'
 import { useI18n } from 'vue-i18n'
 import { User, Lock } from '@element-plus/icons-vue'
 

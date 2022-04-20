@@ -1,14 +1,18 @@
 /*
  * @Description: app Mutations
- * @Author: ZY
- * @Date: 2020-12-23 10:25:37
- * @LastEditors: ZY
- * @LastEditTime: 2020-12-24 09:55:30
+ * @Author:
  */
 import { MutationTree } from 'vuex'
 import { AppState, DeviceType } from './state'
-import { AppMutationTypes } from './mutation-types'
 import { setSidebarStatus, setLanguage, setSize } from '@/utils/cookies'
+
+export enum AppMutationTypes {
+  TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR',
+  CLOSE_SIDEBAR = 'CLOSE_SIDEBAR',
+  TOGGLE_DEVICE = 'TOGGLE_DEVICE',
+  SET_LANGUAGE = 'SET_LANGUAGE',
+  SET_SIZE = 'SET_SIZE',
+}
 
 export type Mutations<S = AppState> = {
   [AppMutationTypes.TOGGLE_SIDEBAR](state: S, withoutAnimation: boolean): void
@@ -16,7 +20,6 @@ export type Mutations<S = AppState> = {
   [AppMutationTypes.TOGGLE_DEVICE](state: S, device: DeviceType): void
   [AppMutationTypes.SET_LANGUAGE](state: S, language: string): void
   [AppMutationTypes.SET_SIZE](state: S, size: string): void
-
 }
 
 export const mutations: MutationTree<AppState> & Mutations = {
@@ -48,6 +51,5 @@ export const mutations: MutationTree<AppState> & Mutations = {
   [AppMutationTypes.SET_SIZE](state: AppState, size: string) {
     state.size = size
     setSize(state.size)
-  }
-
+  },
 }

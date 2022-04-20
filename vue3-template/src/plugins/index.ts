@@ -1,9 +1,6 @@
 /*
  * @Description: 加载插件文件
- * @Author: ZY
- * @Date: 2020-12-19 11:53:00
- * @LastEditors: ZY
- * @LastEditTime: 2020-12-23 16:49:30
+ * @Author:
  */
 import { createApp } from 'vue'
 
@@ -13,7 +10,7 @@ import { createApp } from 'vue'
  */
 export function loadAllPlugins(app: ReturnType<typeof createApp>) {
   const files = require.context('.', true, /\.ts$/)
-  files.keys().forEach(key => {
+  files.keys().forEach((key) => {
     if (typeof files(key).default === 'function') {
       if (key !== './index.ts') files(key).default(app)
     }

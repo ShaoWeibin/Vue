@@ -1,18 +1,14 @@
 /*
  * @Description: app actions
- * @Author: ZY
- * @Date: 2020-12-23 10:25:37
- * @LastEditors: ZY
- * @LastEditTime: 2020-12-23 14:29:18
+ * @Author:
  */
 import { ActionTree, ActionContext } from 'vuex'
 
 // eslint-disable-next-line import/no-cycle
 import { RootState } from '@/store'
 import { AppState, DeviceType } from './state'
-import { Mutations } from './mutations'
-import { AppMutationTypes } from './mutation-types'
-import { AppActionTypes } from './action-types'
+import { AppMutationTypes, Mutations } from './mutations'
+
 type AugmentedActionContext = {
   commit<K extends keyof Mutations>(
     key: K,
@@ -20,27 +16,29 @@ type AugmentedActionContext = {
   ): ReturnType<Mutations[K]>
 } & Omit<ActionContext<AppState, RootState>, 'commit'>
 
+export enum AppActionTypes {
+  ACTION_TOGGLE_SIDEBAR = 'ACTION_TOGGLE_SIDEBAR',
+  ACTION_CLOSE_SIDEBAR = 'ACTION_CLOSE_SIDEBAR',
+  ACTION_TOGGLE_DEVICE = 'ACTION_TOGGLE_DEVICE',
+  ACTION_SET_LANGUAGE = 'ACTION_SET_LANGUAGE',
+  ACTION_SET_SIZE = 'ACTION_SET_SIZE',
+}
+
 export interface Actions {
   [AppActionTypes.ACTION_TOGGLE_SIDEBAR](
     { commit }: AugmentedActionContext,
-    withoutAnimation: boolean
+    withoutAnimation: boolean,
   ): void
   [AppActionTypes.ACTION_CLOSE_SIDEBAR](
     { commit }: AugmentedActionContext,
-    withoutAnimation: boolean
+    withoutAnimation: boolean,
   ): void
   [AppActionTypes.ACTION_TOGGLE_DEVICE](
     { commit }: AugmentedActionContext,
-    device: DeviceType
+    device: DeviceType,
   ): void
-  [AppActionTypes.ACTION_SET_LANGUAGE](
-    { commit }: AugmentedActionContext,
-    language: string
-  ): void
-  [AppActionTypes.ACTION_SET_SIZE](
-    { commit }: AugmentedActionContext,
-    size: string
-  ): void
+  [AppActionTypes.ACTION_SET_LANGUAGE]({ commit }: AugmentedActionContext, language: string): void
+  [AppActionTypes.ACTION_SET_SIZE]({ commit }: AugmentedActionContext, size: string): void
 }
 
 export const actions: ActionTree<AppState, RootState> & Actions = {
@@ -58,5 +56,5 @@ export const actions: ActionTree<AppState, RootState> & Actions = {
   },
   [AppActionTypes.ACTION_SET_SIZE]({ commit }, size: string) {
     commit(AppMutationTypes.SET_SIZE, size)
-  }
+  },
 }

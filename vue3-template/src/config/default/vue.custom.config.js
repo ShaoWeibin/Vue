@@ -1,9 +1,6 @@
 /*
  * @Description:
- * @Author: ZY
- * @Date: 2020-12-09 11:15:59
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-25 17:41:57
+ * @Author:
  */
 const vueDefaultConfig = {
   publicPath: '/',

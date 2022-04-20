@@ -33,8 +33,11 @@ module.exports = defineConfig({
         throw new Error('webpack-dev-server is not defined')
       }
 
+      // 是否启用 mock server 开关
+      const mockServerSwitch = true
+
       // start mock server
-      mockServer(devServer.app)
+      mockServerSwitch && mockServer(devServer.app)
 
       return middlewares
     },

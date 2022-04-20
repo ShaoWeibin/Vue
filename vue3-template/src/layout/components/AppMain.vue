@@ -1,16 +1,10 @@
 <!--
  * @Description: 主视图
- * @Author: ZY
- * @Date: 2020-12-24 10:36:58
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-11 10:27:35
+ * @Author: 
 -->
 <template>
   <section class="app-main">
-    <transition
-      name="fade-transform"
-      mode="out-in"
-    >
+    <transition name="fade-transform" mode="out-in">
       <keep-alive :include="cachedViews">
         <router-view :key="key" />
       </keep-alive>
@@ -35,9 +29,9 @@ export default defineComponent({
     }
     return {
       cachedViews,
-      key
+      key,
     }
-  }
+  },
 })
 </script>
 
@@ -50,7 +44,7 @@ export default defineComponent({
   overflow: hidden;
 }
 
-.fixed-header+.app-main {
+.fixed-header + .app-main {
   padding-top: 50px;
   height: 100vh;
   overflow: auto;
@@ -62,7 +56,7 @@ export default defineComponent({
     min-height: calc(100vh - 84px);
   }
 
-  .fixed-header+.app-main {
+  .fixed-header + .app-main {
     padding-top: 84px;
   }
 }

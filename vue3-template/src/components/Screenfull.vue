@@ -1,9 +1,6 @@
 <!--
  * @Description: 全屏按钮
- * @Author: ZY
- * @Date: 2020-12-23 18:11:46
- * @LastEditors: SCY
- * @LastEditTime: 2021-04-02 14:31:08
+ * @Author: 
 -->
 
 <template>
@@ -18,12 +15,12 @@
 </template>
 
 <script lang="ts">
-import screenfull from 'screenfull';
-import { defineComponent, onBeforeUnmount, onMounted, reactive, toRefs } from 'vue';
-import { FullScreen } from '@element-plus/icons-vue';
-import { ElMessage } from 'element-plus';
+import screenfull from 'screenfull'
+import { defineComponent, onBeforeUnmount, onMounted, reactive, toRefs } from 'vue'
+import { FullScreen } from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
 
-const sf = screenfull;
+const sf = screenfull
 export default defineComponent({
   components: { FullScreen },
   setup() {
@@ -34,32 +31,32 @@ export default defineComponent({
           ElMessage({
             message: 'you browser can not work',
             type: 'warning',
-          });
-          return false;
+          })
+          return false
         }
-        sf.toggle();
+        sf.toggle()
       },
-    });
+    })
     const change = () => {
       if (sf.isEnabled) {
-        state.isFullscreen = sf.isFullscreen;
+        state.isFullscreen = sf.isFullscreen
       }
-    };
+    }
     onMounted(() => {
       if (sf.isEnabled) {
-        sf.on('change', change);
+        sf.on('change', change)
       }
-    });
+    })
 
     onBeforeUnmount(() => {
       if (sf.isEnabled) {
-        sf.off('change', change);
+        sf.off('change', change)
       }
-    });
+    })
 
     return {
       ...toRefs(state),
-    };
+    }
   },
-});
+})
 </script>

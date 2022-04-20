@@ -1,9 +1,6 @@
 <!--
- * @Description:
- * @Author: ZY
- * @Date: 2020-12-24 10:44:01
- * @LastEditors: ZY
- * @LastEditTime: 2021-03-25 08:27:00
+ * @Description: 右侧全局设置
+ * @Author: 
 -->
 
 <template>

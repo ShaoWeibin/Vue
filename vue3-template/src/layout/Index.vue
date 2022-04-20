@@ -1,9 +1,6 @@
 <!--
  * @Description: app 布局入口
- * @Author: ZY
- * @Date: 2020-12-17 15:32:33
- * @LastEditors: SCY
- * @LastEditTime: 2021-04-06 14:47:00
+ * @Author: 
 -->
 <template>
   <div :class="classObj" class="app-wrapper">
@@ -35,7 +32,7 @@ import {
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
-import { AppActionTypes } from '@/store/modules/app/action-types'
+import { AppActionTypes } from '@/store/modules/app'
 import { AppMain, Navbar, Settings, TagsView, Sidebar } from './components'
 import RightPanel from '@/components/RightPanel.vue'
 import resize from './resize'

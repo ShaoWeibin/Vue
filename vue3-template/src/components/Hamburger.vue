@@ -1,9 +1,6 @@
 <!--
  * @Description: 折叠边栏按钮
- * @Author: ZY
- * @Date: 2020-12-23 16:25:41
- * @LastEditors: ZY
- * @LastEditTime: 2020-12-23 17:55:52
+ * @Author: 
 -->
 
 <template>
@@ -13,8 +10,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { Expand } from '@element-plus/icons-vue';
+import { defineComponent } from 'vue'
+import { Expand } from '@element-plus/icons-vue'
 export default defineComponent({
   components: { Expand },
   props: {
@@ -26,13 +23,13 @@ export default defineComponent({
   emits: ['toggle-click'],
   setup(_, context) {
     const toggleClick = () => {
-      context.emit('toggle-click');
-    };
+      context.emit('toggle-click')
+    }
     return {
       toggleClick,
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="scss" scoped>

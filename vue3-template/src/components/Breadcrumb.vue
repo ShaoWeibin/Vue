@@ -1,28 +1,17 @@
 <!--
  * @Description: 面包屑组件
- * @Author: ZY
- * @Date: 2020-12-22 11:02:14
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-28 16:28:40
+ * @Author: 
 -->
 <template>
-  <el-breadcrumb
-    class="app-breadcrumb"
-    separator-class="el-icon-arrow-right"
-  >
+  <el-breadcrumb class="app-breadcrumb" separator-class="el-icon-arrow-right">
     <transition-group name="breadcrumb">
-      <el-breadcrumb-item
-        v-for="(item, index) in breadcrumbs"
-        :key="item.path"
-      >
+      <el-breadcrumb-item v-for="(item, index) in breadcrumbs" :key="item.path">
         <span
-          v-if="item.redirect === 'noredirect' || index === breadcrumbs.length-1"
+          v-if="item.redirect === 'noredirect' || index === breadcrumbs.length - 1"
           class="no-redirect"
-        >{{ t('route.' + item.meta.title) }}</span>
-        <a
-          v-else
-          @click.prevent="handleLink(item)"
-        >{{ t('route.' + item.meta.title) }}</a>
+          >{{ t('route.' + item.meta.title) }}</span
+        >
+        <a v-else @click.prevent="handleLink(item)">{{ t('route.' + item.meta.title) }}</a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
@@ -74,15 +63,18 @@ export default defineComponent({
         router.push(pathCompile(path)).catch((err) => {
           console.warn(err)
         })
-      }
+      },
     })
 
-    watch(() => currentRoute.path, (path) => {
-      if (path.startsWith('/redirect/')) {
-        return
-      }
-      state.getBreadcrumb()
-    })
+    watch(
+      () => currentRoute.path,
+      (path) => {
+        if (path.startsWith('/redirect/')) {
+          return
+        }
+        state.getBreadcrumb()
+      },
+    )
 
     onBeforeMount(() => {
       state.getBreadcrumb()
@@ -90,12 +82,10 @@ export default defineComponent({
 
     return {
       t,
-      ...toRefs(state)
+      ...toRefs(state),
     }
-  }
-
+  },
 })
-
 </script>
 
 <style lang="scss" scoped>

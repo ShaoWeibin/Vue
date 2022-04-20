@@ -1,9 +1,6 @@
 /*
  * @Description: 权限指令
- * @Author: ZY
- * @Date: 2020-12-28 10:39:21
- * @LastEditors: ZY
- * @LastEditTime: 2020-12-28 13:46:23
+ * @Author:
  */
 import { useStore } from '@/store'
 import { Directive } from 'vue'
@@ -21,7 +18,7 @@ export const permission: Directive = {
         el.style.display = 'none'
       }
     } else {
-      throw new Error('need roles! Like v-permission="[\'admin\',\'editor\']"')
+      throw new Error("need roles! Like v-permission=\"['admin','editor']\"")
     }
-  }
+  },
 }

@@ -1,9 +1,6 @@
 /*
  * @Description:
- * @Author: ZY
- * @Date: 2020-12-28 17:18:17
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-20 15:18:42
+ * @Author:
  */
 
 export default {
@@ -29,4 +26,4 @@ export default {
     thirdpartyTips:
       'Can not be simulated on local, so please combine you own business simulation! ! !',
   },
-};
+}

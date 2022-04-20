@@ -1,18 +1,18 @@
 /*
  * @Description: app actions
- * @Author: ZY
- * @Date: 2020-12-23 10:25:37
- * @LastEditors: ZY
- * @LastEditTime: 2020-12-26 14:19:03
+ * @Author:
  */
 import { ActionTree, ActionContext } from 'vuex'
 
 // eslint-disable-next-line import/no-cycle
 import { RootState } from '@/store'
 import { SettingsState } from './state'
-import { Mutations } from './mutations'
-import { SettingsMutationTypes } from './mutation-types'
-import { SettingsActionTypes } from './action-types'
+import { SettingsMutationTypes, Mutations } from './mutations'
+
+export enum SettingsActionTypes {
+  ACTION_CHANGE_SETTING = 'ACTION_CHANGE_SETTING',
+}
+
 type AugmentedActionContext = {
   commit<K extends keyof Mutations>(
     key: K,
@@ -23,15 +23,15 @@ type AugmentedActionContext = {
 export interface Actions {
   [SettingsActionTypes.ACTION_CHANGE_SETTING](
     { commit }: AugmentedActionContext,
-    payload: {key: string, value: any}
+    payload: { key: string; value: any },
   ): void
 }
 
 export const actions: ActionTree<SettingsState, RootState> & Actions = {
   [SettingsActionTypes.ACTION_CHANGE_SETTING](
     { commit }: AugmentedActionContext,
-    payload: {key: string, value: any}
+    payload: { key: string; value: any },
   ) {
     commit(SettingsMutationTypes.CHANGE_SETTING, payload)
-  }
+  },
 }

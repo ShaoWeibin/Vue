@@ -1,9 +1,6 @@
 /*
  * @Description: 角色模型
- * @Author: ZY
- * @Date: 2021-01-12 16:49:16
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-12 16:52:09
+ * @Author:
  */
 
 export interface Meta {

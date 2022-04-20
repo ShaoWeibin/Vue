@@ -1,9 +1,6 @@
 /*
- * @Description:
- * @Author: ZY
- * @Date: 2020-12-29 15:57:00
- * @LastEditors: scy😊
- * @LastEditTime: 2021-01-15 09:33:11
+ * @Description: 用户模型
+ * @Author:
  */
 
 // {

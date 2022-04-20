@@ -1,9 +1,6 @@
 <!--
  * @Description:
- * @Author: ZY
- * @Date: 2020-12-24 10:35:59
- * @LastEditors: ZY
- * @LastEditTime: 2021-03-19 17:10:38
+ * @Author: 
 -->
 <template>
   <div id="tags-view-container" class="tags-view-container">
@@ -50,7 +47,7 @@
 <script lang="ts">
 import path from 'path'
 import { useStore } from '@/store'
-import { TagsActionTypes } from '@/store/modules/tagsview/action-types'
+import { TagsActionTypes } from '@/store/modules/tagsview'
 import { TagView } from '@/store/modules/tagsview/state'
 import {
   computed,

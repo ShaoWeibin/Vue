@@ -1,21 +1,24 @@
 /*
  * @Description: app actions
- * @Author: ZY
- * @Date: 2020-12-23 10:25:37
- * @LastEditors: scy😊
- * @LastEditTime: 2021-01-29 08:46:37
+ * @Author:
  */
 import { ActionTree, ActionContext } from 'vuex'
 import { RootState, useStore } from '@/store'
 import { state, UserState } from './state'
-import { Mutations } from './mutations'
-import { UserMutationTypes } from './mutation-types'
-import { UserActionTypes } from './action-types'
-import { login, logout, getUserInfo } from '@/apis/user'
+import { UserMutationTypes, Mutations } from './mutations'
+import api from '@/api'
 import { removeToken, setToken } from '@/utils/cookies'
-import { PermissionActionType } from '../permission/action-types'
+import { PermissionActionType } from '../permission'
 import router, { resetRouter } from '@/router'
 import { RouteRecordRaw, useRouter } from 'vue-router'
+
+export enum UserActionTypes {
+  ACTION_LOGIN = 'ACTION_LOGIN',
+  ACTION_RESET_TOKEN = 'ACTION_RESET_TOKEN',
+  ACTION_GET_USER_INFO = 'ACTION_GET_USER_INFO',
+  ACTION_CHANGE_ROLES = 'ACTION_CHANGE_ROLES',
+  ACTION_LOGIN_OUT = 'ACTION_LOGIN_OUT',
+}
 
 type AugmentedActionContext = {
   commit<K extends keyof Mutations>(
@@ -42,7 +45,7 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
   ) {
     let { username, password } = userInfo
     username = username.trim()
-    await login({ username, password })
+    await api.UserService.login({ username, password })
       .then(async (res: any) => {
         if (res?.code === 0 && res.data.accessToken) {
           setToken(res.data.accessToken)
@@ -64,7 +67,7 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
     if (state.token === '') {
       throw Error('token is undefined!')
     }
-    await getUserInfo({ token: state.token }).then((res: any) => {
+    await api.UserService.getUserInfo({ token: state.token }).then((res: any) => {
       if (res?.code === 0) {
         commit(UserMutationTypes.SET_ROLES, res.data.roles)
         commit(UserMutationTypes.SET_NAME, res.data.name)
@@ -91,7 +94,7 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
   },
 
   async [UserActionTypes.ACTION_LOGIN_OUT]({ commit }: AugmentedActionContext) {
-    await logout()
+    await api.UserService.logout()
     removeToken()
     commit(UserMutationTypes.SET_TOKEN, '')
     commit(UserMutationTypes.SET_ROLES, [])

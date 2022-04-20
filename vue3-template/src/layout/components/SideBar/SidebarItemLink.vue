@@ -1,24 +1,13 @@
 <!--
  * @Description:
- * @Author: ZY
- * @Date: 2020-12-25 11:34:20
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-27 19:17:44
+ * @Author: 
 -->
 
 <template>
-  <a
-    v-if="isExternal(to)"
-    :href="to"
-    target="_blank"
-    rel="noopener"
-  >
+  <a v-if="isExternal(to)" :href="to" target="_blank" rel="noopener">
     <slot />
   </a>
-  <div
-    v-else
-    @click="push"
-  >
+  <div v-else @click="push">
     <slot />
   </div>
 </template>
@@ -31,8 +20,8 @@ export default defineComponent({
   props: {
     to: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
     const router = useRouter()
@@ -44,8 +33,8 @@ export default defineComponent({
     }
     return {
       push,
-      isExternal
+      isExternal,
     }
-  }
+  },
 })
 </script>

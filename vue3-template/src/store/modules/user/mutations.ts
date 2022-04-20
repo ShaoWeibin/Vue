@@ -1,13 +1,18 @@
 /*
  * @Description: app Mutations
- * @Author: ZY
- * @Date: 2020-12-23 10:25:37
- * @LastEditors: ZY
- * @LastEditTime: 2020-12-28 11:45:02
+ * @Author:
  */
 import { MutationTree } from 'vuex'
 import { UserState } from './state'
-import { UserMutationTypes } from './mutation-types'
+
+export enum UserMutationTypes {
+  SET_TOKEN = 'SET_TOKEN',
+  SET_NAME = 'SET_NAME',
+  SET_AVATAR = 'SET_AVATAR',
+  SET_INTRODUCTION = 'SET_INTRODUCTION',
+  SET_ROLES = 'SET_ROLES',
+  SET_EMAIL = 'SET_EMAIL',
+}
 
 export type Mutations<S = UserState> = {
   [UserMutationTypes.SET_TOKEN](state: S, token: string): void
@@ -41,6 +46,5 @@ export const mutations: MutationTree<UserState> & Mutations = {
 
   [UserMutationTypes.SET_EMAIL](state: UserState, email: string) {
     state.email = email
-  }
-
+  },
 }

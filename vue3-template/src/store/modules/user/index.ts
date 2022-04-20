@@ -1,22 +1,17 @@
 /*
  * @Description: setting moudle
- * @Author: ZY
- * @Date: 2020-12-23 10:25:37
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-05 15:39:26
+ * @Author:
  */
 import { Store as VuexStore, CommitOptions, DispatchOptions, Module } from 'vuex'
 
 // TODO: How to surpass cyclical dependency linting errors cleanly?
 import { RootState } from '@/store'
 import { state } from './state'
-import { mutations, Mutations } from './mutations'
-import { actions, Actions } from './actions'
+import { UserMutationTypes, mutations, Mutations } from './mutations'
+import { UserActionTypes, actions, Actions } from './actions'
 import type { UserState } from './state'
 
-export * from './action-types'
-
-export { UserState }
+export { UserActionTypes, UserMutationTypes, UserState }
 
 export type UserStore<S = UserState> = Omit<VuexStore<S>, 'getters' | 'commit' | 'dispatch'> & {
   commit<K extends keyof Mutations, P extends Parameters<Mutations[K]>[1]>(

@@ -1,9 +1,6 @@
 /*
  * @Description:
- * @Author: ZY
- * @Date: 2020-12-18 15:23:57
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-20 11:12:08
+ * @Author:
  */
 import { createI18n } from 'vue-i18n' // import from runtime only
 
@@ -19,12 +16,12 @@ import zhLocale from './zh-cn'
 const messages = {
   en: {
     ...enLocale,
-    ...elementEnLocale
+    ...elementEnLocale,
   },
   'zh-cn': {
     ...zhLocale,
-    ...elementZhLocale
-  }
+    ...elementZhLocale,
+  },
 }
 
 export const getLocale = () => {
@@ -46,7 +43,7 @@ export const getLocale = () => {
 
 const i18n = createI18n({
   locale: getLocale(),
-  messages: messages
+  messages: messages,
 })
 
 export default i18n

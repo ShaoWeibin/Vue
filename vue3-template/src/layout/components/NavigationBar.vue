@@ -1,9 +1,6 @@
 <!--
  * @Description: 导航栏
- * @Author: ZY
- * @Date: 2020-12-17 15:52:19
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-27 19:16:50
+ * @Author: 
 -->
 <template>
   <div class="navbar">
@@ -50,9 +47,9 @@ import Screenfull from '@/components/Screenfull'
 
 import { computed, reactive, toRefs } from 'vue'
 import { useStore } from '@/store'
-import { AppActionTypes } from '@/store/modules/app/action-types'
+import { AppActionTypes } from '@/store/modules/app'
 import { useI18n } from 'vue-i18n'
-import { UserActionTypes } from '@/store/modules/user/action-types'
+import { UserActionTypes } from '@/store/modules/user'
 import { useRoute, useRouter } from 'vue-router'
 export default {
   components: {

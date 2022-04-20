@@ -1,9 +1,6 @@
 /*
  * @Description: app state
- * @Author: ZY
- * @Date: 2020-12-23 10:25:37
- * @LastEditors: ZY
- * @LastEditTime: 2020-12-23 10:30:35
+ * @Author:
  */
 import { getSidebarStatus, getSize } from '@/utils/cookies'
 import { getLocale } from '@/locales'
@@ -27,8 +24,8 @@ export const state: AppState = {
   device: DeviceType.Desktop,
   sidebar: {
     opened: getSidebarStatus() !== 'closed',
-    withoutAnimation: false
+    withoutAnimation: false,
   },
   language: getLocale(),
-  size: getSize() || 'medium'
+  size: getSize() || 'medium',
 }

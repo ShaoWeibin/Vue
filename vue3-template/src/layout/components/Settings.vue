@@ -1,9 +1,6 @@
 <!--
  * @Description: 设置页面
- * @Author: ZY
- * @Date: 2020-12-17 16:05:05
- * @LastEditors: ZY
- * @LastEditTime: 2021-01-27 13:48:18
+ * @Author: 
 -->
 <template>
   <div class="drawer-container">
@@ -45,7 +42,7 @@
 
 <script lang="ts">
 import { useStore } from '@/store'
-import { SettingsActionTypes } from '@/store/modules/settings/action-types'
+import { SettingsActionTypes } from '@/store/modules/settings'
 import { defineComponent, reactive, toRefs, watch } from 'vue'
 import ThemePicker from '@/components/ThemePicker.vue'
 import { useI18n } from 'vue-i18n'

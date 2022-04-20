@@ -1,9 +1,6 @@
 <!--
  * @Description:
- * @Author: ZY
- * @Date: 2020-12-24 10:35:47
- * @LastEditors: SCY
- * @LastEditTime: 2021-04-06 14:16:03
+ * @Author: 
 -->
 <template>
   <div :class="{ 'has-logo': showLogo }" class="sideWrap">

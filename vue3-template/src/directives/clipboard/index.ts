@@ -1,9 +1,6 @@
 /*
  * @Description: 粘贴板
- * @Author: ZY
- * @Date: 2020-12-28 10:39:21
- * @LastEditors: ZY
- * @LastEditTime: 2020-12-28 13:58:35
+ * @Author:
  */
 // Inspired by https://github.com/Inndy/vue-clipboard2
 import Clipboard from 'clipboard'
@@ -25,14 +22,18 @@ export const clipboard: Directive = {
       errorCallback = binding.value
     } else {
       clipboardInstance = new Clipboard(el, {
-        text() { return binding.value },
-        action() { return binding.arg === 'cut' ? 'cut' : 'copy' }
+        text() {
+          return binding.value
+        },
+        action() {
+          return binding.arg === 'cut' ? 'cut' : 'copy'
+        },
       })
-      clipboardInstance.on('success', e => {
+      clipboardInstance.on('success', (e) => {
         const callback = successCallback
         callback && callback(e)
       })
-      clipboardInstance.on('error', e => {
+      clipboardInstance.on('error', (e) => {
         const callback = errorCallback
         callback && callback(e)
       })
@@ -46,8 +47,12 @@ export const clipboard: Directive = {
       errorCallback = binding.value
     } else {
       clipboardInstance = new Clipboard(el, {
-        text() { return binding.value },
-        action() { return binding.arg === 'cut' ? 'cut' : 'copy' }
+        text() {
+          return binding.value
+        },
+        action() {
+          return binding.arg === 'cut' ? 'cut' : 'copy'
+        },
       })
     }
   },
@@ -63,5 +68,5 @@ export const clipboard: Directive = {
       }
       clipboardInstance = null
     }
-  }
+  },
 }
