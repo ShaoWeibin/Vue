@@ -4,13 +4,12 @@ import router from './router'
 import { store } from './store'
 import { loadAllPlugins } from './plugins'
 import './permission'
-import * as directives from './directive'
+import * as directives from './directives'
 
 // import '@/styles/element-variables.scss'
 import '@/styles/index.scss'
 
 const app = createApp(App)
-console.log(xxxx)
 
 // 加载所有插件
 loadAllPlugins(app)
