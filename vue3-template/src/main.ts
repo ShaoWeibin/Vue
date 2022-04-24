@@ -10,6 +10,7 @@ import * as directives from './directives'
 import '@/styles/index.scss'
 
 const app = createApp(App)
+console.log(xxx)
 
 // 加载所有插件
 loadAllPlugins(app)
