@@ -4,7 +4,7 @@ import router from './router'
 import { store } from './store'
 import { loadAllPlugins } from './plugins'
 import './permission'
-import * as directives from './directives'
+import * as directives from './directive'
 
 // import '@/styles/element-variables.scss'
 import '@/styles/index.scss'

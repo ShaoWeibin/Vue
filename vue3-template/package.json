@@ -10,7 +10,8 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "mock": "cd mock-express && ts-node-dev mock-server.ts"
+    "mock": "cd mock-express && ts-node-dev mock-server.ts",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
@@ -50,6 +51,7 @@
     "@types/yamljs": "^0.2.31",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-e2e-cypress": "~5.0.0",
+    "@vue/cli-plugin-eslint": "^5.0.4",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-typescript": "~5.0.0",
     "@vue/cli-plugin-unit-jest": "~5.0.0",
@@ -63,6 +65,7 @@
     "concurrently": "^7.1.0",
     "cors": "^2.8.5",
     "cypress": "^8.3.0",
+    "husky": "^7.0.4",
     "jest": "^27.0.5",
     "less": "^4.0.0",
     "less-loader": "^8.0.0",
